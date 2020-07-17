@@ -11,4 +11,15 @@ class Item(models.Model):
 	stock_level = models.IntegerField()
 
 	def __str__(self):
-		return self.isbn
+		return self.category
+#
+class Account(models.Model):
+
+	creation_date = models.DateTimeField()
+	email = models.Field()
+	user_name = models.CharField(max_length=11)
+	password = models.CharField(max_length=50)
+	active = models.BooleanField()
+
+	def __str__(self):
+		return self.creation_date
