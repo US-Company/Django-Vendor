@@ -16,7 +16,7 @@ class Item(models.Model):
 class Account(models.Model):
 
 	creation_date = models.DateTimeField()
-	email = models.Field()
+	e_mail = models.EmailField()
 	user_name = models.CharField(max_length=11)
 	password = models.CharField(max_length=50)
 	active = models.BooleanField()
