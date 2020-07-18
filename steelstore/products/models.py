@@ -1,6 +1,15 @@
 from django.db import models
 
 # Create your models here.
+class Order(models.Model):
+	creation_date = models.DateTimeField()
+	especial_instruction = models.TextField()
+	number_order = models.PositiveIntegerField()
+	payment_method = models.CharField(max_length=255)
+
+	def _str_(self):
+		return self.creation_date
+
 
 class Item(models.Model):
 
