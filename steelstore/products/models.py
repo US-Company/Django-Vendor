@@ -2,15 +2,19 @@ from django.db import models
 from django.utils import timezone
 # Create your models here.
 class Order(models.Model):
-	creation_date = models.DateTimeField()
-	especial_instruction = models.TextField()
+
+	creation_date = models.DateTimeField(editable=False)
+	especial_instruccion = models.TextField()
 	number_order = models.PositiveIntegerField()
-	payment_method = models.CharField(max_length=255)
+	payment_method = models.CharField(max_length=225)
 
-	def _str_(self):
-		return self.creation_date
+	def __str__(self):
+		return self.especial_instruccion
 
-
+	def save(self, *args, **kwargs):
+		if not self.id:
+			self.creation_date = timezone.now()
+		return super(Order, self). save(*args, **kwargs)
 
 class Item(models.Model):
 
