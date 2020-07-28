@@ -24,12 +24,12 @@ class Producto(models.Model):
 	price = models.DecimalField(decimal_places=2, max_digits=6)
 	
 	def __str__(self):
-		return self.category
+		return self.nombre_producto
 
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.create = timezone.now()
-		return super(Item, self).save(*args, **kwargs)
+		return super(Producto, self).save(*args, **kwargs)
 
 
 class Account(models.Model):
