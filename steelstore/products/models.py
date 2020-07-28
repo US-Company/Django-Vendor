@@ -16,14 +16,13 @@ class Order(models.Model):
 			self.creation_date = timezone.now()
 		return super(Order, self). save(*args, **kwargs)
 
-class Item(models.Model):
+class Producto(models.Model):
 
-	category = models.CharField(max_length=225)
-	isbn = models.CharField(max_length=225)
+	nombre_producto = models.CharField(max_length=225)
+	stock_level = models.IntegerField()
 	create = models.DateTimeField(editable=False)
 	price = models.DecimalField(decimal_places=2, max_digits=6)
-	stock_level = models.IntegerField()
-
+	
 	def __str__(self):
 		return self.category
 
