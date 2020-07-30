@@ -10,6 +10,7 @@ from products.models import Producto
 class ImportExcel(models.Model):
 	name_file = models.CharField(max_length=50)
 	excel_file = models.FileField(upload_to="excel_files")
+	status_file = models.BooleanField(default=False)
 
 	__original_excel = None
 
@@ -33,12 +34,16 @@ class ImportExcel(models.Model):
 			data_iterator = iter(data_json)
 			data_only = next(data_iterator)
 
-			for item in data_only:
-				fields_excel = len(item)
-				model_product = Producto()
-				if fields_excel == 4:
-					model_product.nombre_producto = item[1]
-					model_product.stock_level = item[2]
-					model_product.price = 12
-					model_product.save()
+			if self.status_file == False:
+				for item in data_only:
+					try:
+						model_product = Producto()
+						model_product.nombre_producto = str(item[0])
+						model_product.stock_level = int(item[1])
+						model_product.price = float(item[2])
+						model_product.save()
+					except:
+						print("Se omite %s" % (item))
+				self.status_file = True
+				self.save()
 		
