@@ -25,7 +25,7 @@ SECRET_KEY = '9@8u^9rb3asphnwek7c4y$&b(1-*z791u3!z10hnic)#52l@-5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products.apps.ProductsConfig',
     'excel.apps.ExcelConfig',
+    'Invoices.apps.InvoicesConfig',
     
 ]
 
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Monterrey'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

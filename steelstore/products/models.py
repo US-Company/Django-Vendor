@@ -1,6 +1,9 @@
 from django.db import models
 from django.utils import timezone
-# Create your models here.
+
+
+# Create your models here
+
 class Order(models.Model):
 
 	creation_date = models.DateTimeField(editable=False)
@@ -47,3 +50,4 @@ class Account(models.Model):
 		if not self.id:
 			self.creation_date = timezone.now()
 		return super(Account, self).save(*args, **kwargs)
+
